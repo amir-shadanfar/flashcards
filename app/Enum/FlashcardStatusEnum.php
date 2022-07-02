@@ -2,7 +2,7 @@
 
 namespace App\Enum;
 
-enum FlashcardEnum: string
+enum FlashcardStatusEnum: string
 {
     use EnumToArray;
     
