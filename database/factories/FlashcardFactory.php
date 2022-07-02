@@ -18,7 +18,7 @@ class FlashcardFactory extends Factory
     {
         return [
             'question' => fake()->paragraph(1),
-            'answer' => fake()->paragraph(1),
+            'answer' => fake()->randomElement(['good', 'bad', 'fantastic', 'incredible', 'worst', 'awesome', 'awful']),
         ];
     }
 }
