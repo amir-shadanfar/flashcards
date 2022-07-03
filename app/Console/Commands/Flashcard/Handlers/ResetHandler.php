@@ -35,11 +35,9 @@ class ResetHandler extends Command
     }
 
     /**
-     * Execute the console command.
-     *
-     * @return int
+     * @return mixed
      */
-    public function handle(): int
+    public function handle()
     {
         if ($this->mainMenu->confirm('Are you sure to "reset" practice data?')) {
             // remove data
@@ -50,8 +48,6 @@ class ResetHandler extends Command
         }
 
         // back to the main menu
-        $this->mainMenu->handle();
-
-        return 0;
+        return $this->mainMenu->handle();
     }
 }

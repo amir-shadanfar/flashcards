@@ -55,7 +55,7 @@ class PracticeHandler extends Command
             // continue or stop
             $flashcardId = $this->mainMenu->ask("Pick a question to practice or press 'q' back the main menu:");
             if ($flashcardId == 'q') {
-                $this->mainMenu->handle();
+                return $this->mainMenu->handle();
             }
 
             // validate user input
@@ -90,8 +90,6 @@ class PracticeHandler extends Command
             }
             $this->showUserProgress();
         }
-
-        return 0;
     }
 
     /**

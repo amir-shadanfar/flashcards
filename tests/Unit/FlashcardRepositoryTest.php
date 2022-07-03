@@ -14,25 +14,11 @@ use Tests\TestCase;
  */
 class FlashcardRepositoryTest extends TestCase
 {
-    /**
-     * @var \App\Repository\FlashcardRepository
-     */
-    private FlashcardRepository $flashcardRepository;
-
-    /**
-     * @var \App\Models\User
-     */
-    private User $user;
-
+    
     public function setUp(): void
     {
         parent::setUp();
-        
         $this->initDatabase();
-        $this->flashcardRepository = app(FlashcardRepository::class);
-        // login a user
-        $this->user = User::where('email', 'amir@gmail.com')->first();
-        $this->actingAs($this->user);
     }
 
     public function tearDown(): void

@@ -25,7 +25,7 @@ class FlashcardMainMenu extends Command
 
     /**
      * inject flashcard repo to use inside all submenu
-     * 
+     *
      * @param \App\Repository\FlashcardRepositoryInterface $flashcardRepository
      */
     public function __construct(public FlashcardRepositoryInterface $flashcardRepository)
@@ -38,23 +38,25 @@ class FlashcardMainMenu extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         // check credentials
-        $credentials = [
-            'email' => $this->option('email'),
-            'password' => $this->option('password'),
-        ];
-        if (!Auth::attempt($credentials)) {
-            $this->error('Authentication is failed!');
-            return 0;
+        if (!Auth::check()) {
+            $credentials = [
+                'email' => $this->option('email'),
+                'password' => $this->option('password'),
+            ];
+            if (!Auth::attempt($credentials)) {
+                $this->error('Authentication is failed!');
+                return 0;
+            }
         }
 
         $this->info('Welcome, ' . Auth::user()->name);
         $choice = $this->choice('Please choose your action?', FlashcardMenuEnum::values(), 1, 5);
 
         // show menu until user want to exit
-        while ($choice !== FlashcardMenuEnum::Exit->value) {
+        while ($choice !== FlashcardMenuEnum::EXIT->value) {
             // call submenu according the user input
             $action = FlashcardMenuFactory::create($choice, $this);
             $action->handle();

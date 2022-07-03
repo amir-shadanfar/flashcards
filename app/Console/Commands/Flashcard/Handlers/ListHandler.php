@@ -34,11 +34,9 @@ class ListHandler extends Command
     }
 
     /**
-     * Execute the console command.
-     *
-     * @return int
+     * @return mixed
      */
-    public function handle(): int
+    public function handle()
     {
         do {
             $questions = $this->mainMenu->flashcardRepository->list(['id', 'question', 'answer'])->toArray();
@@ -46,8 +44,6 @@ class ListHandler extends Command
         } while (!$this->mainMenu->confirm('Back to main manu?', true));
 
         // back to the main menu
-        $this->mainMenu->handle();
-
-        return 0;
+        return $this->mainMenu->handle();
     }
 }

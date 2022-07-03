@@ -35,8 +35,6 @@ class CreateHandler extends Command
     }
 
     /**
-     * Execute the console command.
-     *
      * @return int
      */
     public function handle(): int
@@ -56,15 +54,15 @@ class CreateHandler extends Command
             );
             if ($validator->errors()) {
                 $this->mainMenu->error($validator->errors()->first());
+                continue;
             }
             // create flashcard
             $this->mainMenu->flashcardRepository->create($question, $answer);
+            $this->mainMenu->info('New flashcard added.');
 
-        } while ($this->mainMenu->confirm('New flashcard added. Do you want to add more?', true));
+        } while ($this->mainMenu->confirm('Do you want to add more?', true));
 
         // back to the main menu
-        $this->mainMenu->handle();
-
-        return 0;
+         return $this->mainMenu->handle();
     }
 }

@@ -26,7 +26,7 @@ class StatsHandler extends Command
      *
      * @var string
      */
-    protected $description = '';
+    protected $description = 'Show the statistics of user progress';
 
     /**
      * @param \Illuminate\Console\Command $mainMenu
@@ -37,11 +37,9 @@ class StatsHandler extends Command
     }
 
     /**
-     * Execute the console command.
-     *
-     * @return int
+     * @return mixed
      */
-    public function handle(): int
+    public function handle()
     {
         do {
             $this->mainMenu->table(['Metrics', 'Statistics'], [
@@ -60,8 +58,6 @@ class StatsHandler extends Command
         } while (!$this->mainMenu->confirm('Back to main manu?', true));
 
         // back to the main menu
-        $this->mainMenu->handle();
-
-        return 0;
+        return $this->mainMenu->handle();
     }
 }
