@@ -16,7 +16,7 @@ For context: a flashcard is a spaced repetition tool for memorising questions an
 
 ### Installation
 ```
-$ git clone https://github.com/amir-shadanfar/flashcard.git
+$ git clone https://github.com/amir-shadanfar/flashcards.git
 
 $ cd flashcard
 
