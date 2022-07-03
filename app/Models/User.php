@@ -41,4 +41,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * @return mixed
+     */
+    public function flashcards()
+    {
+        return $this->belongsToMany(Flashcard::class)
+            ->withPivot('status');
+    }
 }
